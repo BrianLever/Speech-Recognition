@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueMaria", "BlueMaria\BlueMaria.csproj", "{5E9204D2-15EF-4E52-85CC-C12071CAF959}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LstnMic", "LstnMic\LstnMic.csproj", "{240B7A05-7998-4124-BECD-7DE75DF3F0D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{F70F295E-9F62-4C45-96B6-5E8FFCD618DA}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BlueMaria.Setup", "BlueMaria.Setup\BlueMaria.Setup.vdproj", "{28723843-34AB-46BD-B983-E988225621AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueMariaLocalization", "BlueMariaLocalization\BlueMariaLocalization.csproj", "{1891AC58-20C9-448A-90FE-73B09334C7BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueMariaStartUp", "BlueMariaStartUp\BlueMariaStartUp.csproj", "{CD882659-F515-4F3B-BEE1-92661944AFAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E9204D2-15EF-4E52-85CC-C12071CAF959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9204D2-15EF-4E52-85CC-C12071CAF959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9204D2-15EF-4E52-85CC-C12071CAF959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9204D2-15EF-4E52-85CC-C12071CAF959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{240B7A05-7998-4124-BECD-7DE75DF3F0D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{240B7A05-7998-4124-BECD-7DE75DF3F0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240B7A05-7998-4124-BECD-7DE75DF3F0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{240B7A05-7998-4124-BECD-7DE75DF3F0D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F70F295E-9F62-4C45-96B6-5E8FFCD618DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70F295E-9F62-4C45-96B6-5E8FFCD618DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70F295E-9F62-4C45-96B6-5E8FFCD618DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70F295E-9F62-4C45-96B6-5E8FFCD618DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28723843-34AB-46BD-B983-E988225621AD}.Debug|Any CPU.ActiveCfg = Debug
+		{28723843-34AB-46BD-B983-E988225621AD}.Release|Any CPU.ActiveCfg = Release
+		{1891AC58-20C9-448A-90FE-73B09334C7BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1891AC58-20C9-448A-90FE-73B09334C7BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1891AC58-20C9-448A-90FE-73B09334C7BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1891AC58-20C9-448A-90FE-73B09334C7BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD882659-F515-4F3B-BEE1-92661944AFAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD882659-F515-4F3B-BEE1-92661944AFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD882659-F515-4F3B-BEE1-92661944AFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD882659-F515-4F3B-BEE1-92661944AFAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E850B1B6-D733-4426-9B88-C5CCBC1C8D5C}
+	EndGlobalSection
+EndGlobal

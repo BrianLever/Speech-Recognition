@@ -1,0 +1,7 @@
+Few things for the visual studio to be build properly.
+
+1. Babel.Build.targets to be present in the solution directory path. It contains the Switches for the babel obfuscation. Any changes to the obfuscation should be done in this file. This is checked in and hence would be available once you download the code from bitbucket.
+
+2. The post builld has reference to the signtool exe. Make sure that you have the tool available it generally is available with the SDK. the current path on my machine is "C:\Program Files (x86)\Windows Kits\10\bin\x64\signtool"
+
+3. Make sure you place the certificate file (BlueMaria.p12) in the debug folder to sign the target exe. This file is not checked in for security reasons and hence needs to be requested from blue maria team and has to be placed in the debug folder.

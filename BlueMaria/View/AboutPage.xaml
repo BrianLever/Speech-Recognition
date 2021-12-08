@@ -1,0 +1,25 @@
+﻿<Page x:Class="BlueMaria.View.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BlueMaria.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="320"
+      Title="AboutPage" FontFamily="{StaticResource Philosopher}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="153*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="1" HorizontalContentAlignment="Center"  RenderOptions.BitmapScalingMode="HighQuality" FontSize="16" VerticalContentAlignment="Center" Content="Blue-Maria | Voice-Typing at it's Best!"></Label>
+        <Label Grid.Row="2" HorizontalContentAlignment="Center"  RenderOptions.BitmapScalingMode="HighQuality"  FontSize="13"  VerticalContentAlignment="Top" Content="{Binding ProductVersion}"/>
+        <Label HorizontalContentAlignment="Center"  RenderOptions.BitmapScalingMode="HighQuality" VerticalContentAlignment="Center" FontSize="13"  Content="Copyright © 2019 ABC-Usability UG (haftungsbeschränkt)." Grid.Row="3"/>
+        <Label HorizontalContentAlignment="Center"  RenderOptions.BitmapScalingMode="HighQuality" VerticalContentAlignment="Top" FontSize="13"  Content=" All Rights reserved." Grid.Row="4"/>
+    </Grid>
+</Page>

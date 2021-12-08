@@ -1,0 +1,412 @@
+<!--
+***********************************************************************************************
+Babel.targets
+
+This file contains the Obfuscate target definition.
+The Obfuscate target is inserted into the build process after the AfterBuild target
+to call babel.exe passing the build output.
+
+***********************************************************************************************
+*                                        HOW TO                                               *
+***********************************************************************************************
+
+1) How to call Babel task in a Visual Studio project
+===============================================================================================
+1.1) Inside the Solution Explorer Unload Visual Studio project and start edit the .csproj file
+1.2) In the project file insert the following line:
+     <Import Project="<full path to Babel.Build.targets file>" />
+     after this line:
+     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+1.3) Reload Project and rebuild. If everything is OK you should see the
+     babel.exe output log into the Visual Studio Output panel.
+
+2) How to add an XML rule file to configure the obfuscation process
+===============================================================================================
+2.1) In the Solution Explorer select the project node
+2.2) Right click and choose Add -> New Item...
+2.3) Select XML file and give it the following name: BabelRules.xml
+2.4) Fill the XML file with obfuscation rules
+2.5) Save and rebuild the project
+
+***********************************************************************************************
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- ================================================================== -->
+  <!-- Configuration                                                      -->
+  <!-- Update this section according your babel installation              -->
+  <!-- configuration.                                                     -->
+  <!-- ================================================================== -->
+  <!-- Uncomment following line if Babel.Build.dll is installed into the GAC -->
+  <UsingTask TaskName="Babel" AssemblyName="Babel.Build, Version=9.1.0.0, Culture=neutral, PublicKeyToken=138d17b5bd621ab7" />
+  <!-- Uncomment following line if Babel.Build.dll is installed into a local folder.
+       The AssemblyFile attribute must contains the full path to Babel.Build.dll
+  -->
+  <!-- <UsingTask TaskName="Babel" AssemblyFile="C:\Program Files\Babel\MSBuild\Babel.Build.dll" /> -->
+  <PropertyGroup>
+    <!-- Set the path to the directory where babel.exe is installed. -->
+    <BabelDirectory>C:\Program Files (x86)\Babel\</BabelDirectory>
+  </PropertyGroup>
+  <!-- ================================================================== -->
+  <!-- Babel Task Properties                                              -->
+  <!--                                                                    -->
+  <!-- ================================================================== -->
+  <PropertyGroup>
+    <!-- ================================================================== -->
+    <!-- Misc Options                                                       -->
+    <!-- ================================================================== -->
+    <EnableObfuscation>true</EnableObfuscation>
+    <EnableObfuscationAgent>true</EnableObfuscationAgent>
+    <NoWarnings>
+    </NoWarnings>
+    <QuickRules>
+    </QuickRules>
+    <AddReferences>
+    </AddReferences>
+    <SearchDirectories>
+    </SearchDirectories>
+    <SearchSatelliteAssemblies>
+    </SearchSatelliteAssemblies>
+    <SatelliteAssemblies>
+    </SatelliteAssemblies>
+    <DbgHelpDllDir>
+    </DbgHelpDllDir>
+    <RandomSeed>
+    </RandomSeed>
+    <!-- Usage flags
+      Integer between 0 and 10 (default value is 6)
+      experimental = true/false  : Whether to use experimental features
+    -->
+    <Use>
+    </Use>
+    <!-- Plugins arguments
+    See Babel Plugins at: https://github.com/babelfornet/BabelPlugins    
+    -->
+    <PluginsArguments>
+    </PluginsArguments>
+    <!-- ================================================================== -->
+    <!-- Diagnostic Related                                                 -->
+    <!-- ================================================================== -->
+    <VerboseLevel>3</VerboseLevel>
+    <!-- Trace messages
+    Contains a list of regular expression matching symbol fully qualified
+    names.
+    -->
+    <Trace>
+    </Trace>
+    <!-- List of warning codes that should be considered as errors
+    -->
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <!-- Whether to show obfuscation statistics
+    -->
+    <ShowStatistics>true</ShowStatistics>
+    <!-- Whether to show babel obfuscator version
+    -->
+    <ShowLogo>true</ShowLogo>
+    <!-- ================================================================== -->
+    <!-- Package Related                                                    -->
+    <!-- ================================================================== -->
+    <BabelTakeFiles>
+    </BabelTakeFiles>
+    <BabelSkipFiles>
+    </BabelSkipFiles>
+    <!-- XapCompressionLevel
+      Integer between 0 and 10 (default value is 6)
+      0  : Do not compress the output XAP package
+      10 : Use maximum compression level
+    -->
+    <XapCompressionLevel>
+    </XapCompressionLevel>
+    <!-- ================================================================== -->
+    <!-- Input Files                                                        -->
+    <!-- ================================================================== -->
+    <BabelRulesFileName>BabelRules.xml</BabelRulesFileName>
+    <BableRulesFiles Condition="Exists('$(ProjectDir)$(BabelRulesFileName)')">
+      $(ProjectDir)$(BabelRulesFileName)
+    </BableRulesFiles>
+    <!--
+    Inline XML rules
+    -->
+    <XmlRules>
+    </XmlRules>
+    <!--
+    Android Keys
+    Key information for signing APK packages
+    -->
+    <AndroidSigningKeyStore>
+    </AndroidSigningKeyStore>
+    <AndroidSigningKeyPass>
+    </AndroidSigningKeyPass>
+    <AndroidSigningStorePass>
+    </AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>
+    </AndroidSigningKeyAlias>
+    <!-- ================================================================== -->
+    <!-- Output Files                                                       -->
+    <!-- ================================================================== -->
+    <GenerateDebug>false</GenerateDebug>
+    <PdbFile>
+    </PdbFile>
+    <PdbPwd>
+    </PdbPwd>
+    <GenerateBabelLogFile>false</GenerateBabelLogFile>
+    <BabelLogFile>
+    </BabelLogFile>
+    <GenerateBabelMapOutFile>false</GenerateBabelMapOutFile>
+    <BabelMapOutFile>
+    </BabelMapOutFile>
+    <MakeBabelProjectFile>
+    </MakeBabelProjectFile>
+    <!-- ================================================================== -->
+    <!-- Merge & Embed                                                      -->
+    <!-- ================================================================== -->
+    <MergeInternalize>false</MergeInternalize>
+    <MergeCopyAttributes>true</MergeCopyAttributes>
+    <DependenciesManifest>true</DependenciesManifest>
+    <!-- ================================================================== -->
+    <!-- Obfuscation & Protection                                           -->
+    <!-- ================================================================== -->
+    <!-- Renaming -->
+    <ObfuscateTypes>true</ObfuscateTypes>
+    <ObfuscateEvents>true</ObfuscateEvents>
+    <ObfuscateMethods>true</ObfuscateMethods>
+    <ObfuscateParameters>true</ObfuscateParameters>
+    <ObfuscateProperties>true</ObfuscateProperties>
+    <ObfuscateFields>true</ObfuscateFields>
+    <ObfuscateXaml>false</ObfuscateXaml>
+    <FlattenNamespaces>true</FlattenNamespaces>
+    <UnicodeNormalization>true</UnicodeNormalization>
+    <VirtualFunctions>true</VirtualFunctions>
+    <OverloadedRenaming>true</OverloadedRenaming>
+    <XmlDoc>
+    </XmlDoc>
+    <!-- Set name length
+      Can be a positive integer or a list of key value pairs.
+      Available keys: types, methods, properties, events, fields
+      
+      Ex:
+      <NameLength>
+        types=5;methods=3
+      </NameLength>
+    -->
+    <NameLength>
+    </NameLength>
+    <!-- Set name prefix
+      Can be a string or a list of key value pairs.
+      Available keys: types, methods, properties, events, fields, parameters
+      
+      Ex:
+      <NameLength>
+        types=$Name_;methods=METHOD_
+      </NameLength>
+      
+      The special value $Name is replaced with the original symbol name
+    -->
+    <NamePrefix>
+    </NamePrefix>
+    <!-- Control Flow Obfuscation
+      ControlFlowObfuscation accepts a combination of the following key value pairs:
+      goto      = true/false
+      if        = true/false
+      switch    = true/false
+      case      = true/false
+      token     = true/false
+      underflow = true/false
+      value     = true/false
+
+      Ex:
+      <ControlFlowObfuscation>
+        goto=true;if=true;switch=true;case=false;call=true;value=false
+      </ControlFlowObfuscation>
+    -->
+    <ControlFlowObfuscation>true</ControlFlowObfuscation>
+    <ILIterations>3</ILIterations>
+    <EmitInvalidOpcodes>false</EmitInvalidOpcodes>
+    <!-- String Encryption
+      StringEncryption can be one of the following values:
+      xor     : XOR algorithm
+      hash    : HASH algorithm
+      custom  : User defined encryption algorithm
+    -->
+    <StringEncryption>true</StringEncryption>
+    <!-- Value Encryption
+      Whether to hide constant values and arrays
+      Can be a boolean value or a combination of the following key value pairs:
+      int32   = true/false
+      int64   = true/false
+      single  = true/false
+      double  = true/false
+      array   = true/false
+
+      Ex:
+
+      <ValueEncryption>int32=true;int64=true;single=true;double=true;array=true</ValueEncryption>
+    -->
+    <ValueEncryption>false</ValueEncryption>
+    <!--
+      MsilEncryption can be a boolean value or a list of regular expressions
+      matching the method qualified names that should be encrypted
+    -->
+    <MsilEncryption>false</MsilEncryption>
+    <!--
+      Whether to hide managed resources
+      Can be a boolean value or a combination of the following key value pairs:
+      encrypt   = true/false
+      compress  = true/false
+      Ex: <ResourceEncryption>encrypt=false;compress=true</ResourceEncryption>
+    -->
+    <ResourceEncryption>true</ResourceEncryption>
+    <SuppressIldasm>true</SuppressIldasm>
+    <!--
+      Whether to generate invalid metadata
+      Can be a boolean value or a positive integer that express the level of invalid
+      metadata generated. 
+      The higher the level the greater the amount of invalid metadata generated.
+    -->
+    <SuppressReflection>true</SuppressReflection>
+    <!--
+      Whether to generate dynamic proxy for each call or new IL instruction
+      Can be one of the following values:
+
+      none     : Do not generate proxies
+      external : Generate proxies for external calls
+      internal : Generate proxies for internal calls
+      all      : Generate proxies for internal and external calls
+
+      Ex:
+
+      <DynamicProxy>external</DynamicProxy>
+    -->
+    <DynamicProxy>none</DynamicProxy>
+    <!--
+      Used to filter methods for which a proxy should be generated.
+      Contains a list of regular expression matching method fully qualified
+      names.
+    -->
+    <DynamicProxyCallFilters>
+    </DynamicProxyCallFilters>
+    <!--
+      Whether to enable tampering detection.      
+    -->
+    <TamperingDetection>true</TamperingDetection>
+    <!--
+      Whether to enable anti debugging protection.      
+    -->
+    <DebuggingProtection>true</DebuggingProtection>
+    <!-- ================================================================== -->
+    <!-- Code Generation                                                    -->
+    <!-- ================================================================== -->
+    <BabelInstrument>false</BabelInstrument>
+    <InstrumentEmptyMethods>true</InstrumentEmptyMethods>
+    <ModuleInitializer>false</ModuleInitializer>
+    <ModuleInitializerTarget>
+    </ModuleInitializerTarget>
+    <ModuleVersionId>
+    </ModuleVersionId>
+    <!--
+      Set source assembly framework name.
+      Available names:
+        net
+        android
+        compact
+        ios
+        micro
+        mono
+        portable
+        runtime
+        silverlight
+        xbox
+    -->
+    <Framework>
+    </Framework>
+    <!-- ================================================================== -->
+    <!-- Optimizations                                                      -->
+    <!-- ================================================================== -->
+    <!--
+      Whether to remove unused code.
+    -->
+    <DeadCodeElimination>true</DeadCodeElimination>
+    <!--
+      Enable or disable sealing of internal classes.
+    -->
+    <SealClasses>true</SealClasses>
+    <!--
+      Whether to replace System.Enum types with their constant value.
+    -->
+    <EnumRemoval>true</EnumRemoval>
+    <!--
+      Whether to replace constant fields with their value.
+    -->
+    <ConstRemoval>true</ConstRemoval>
+    <!--
+      Whether to transform property getter and setter to methods.
+      The corresponding property definition will be removed.
+    -->
+    <DisgregateRemoval>true</DisgregateRemoval>
+    <!--
+      Whether to in-line expand methods calls.
+      Can be a boolean value or a list of regular expression matching
+      the method qualified name to be in-lined.
+    -->
+    <InlineExpansion>true</InlineExpansion>
+    <!--
+      Whether to remove custom attributes.
+      Can be a boolean value or a list of regular expression matching
+      the custom attribute full type name.
+    -->
+    <CleanAttributes>false</CleanAttributes>
+  </PropertyGroup>
+  <!-- ================================================================== -->
+  <!-- Properties Overrides for .NET Micro Framework                      -->
+  <!-- ================================================================== -->
+  <Choose>
+    <When Condition=" '$(TargetFrameworkIdentifier)' == '.NETMicroFramework' OR '$(TargetFrameworkIdentifier)' == '.NETnanoFramework' ">
+      <PropertyGroup>
+        <BabelInputFile>$(ProjectDir)$(BaseIntermediateOutputPath)$(ConfigurationName)\$(TargetName)$(TargetExt)</BabelInputFile>
+        <BabelOutputFile>$(ProjectDir)$(BaseIntermediateOutputPath)$(ConfigurationName)\$(TargetName)$(TargetExt)</BabelOutputFile>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <BabelInputFile>$(TargetPath)</BabelInputFile>
+        <BabelOutputFile>
+        </BabelOutputFile>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <!-- ================================================================== -->
+  <!-- The Build Sequence                                                 -->
+  <!-- The main build entry point with Obfuscate target                   -->
+  <!-- performed after AfterBuild target.                                 -->
+  <!-- ================================================================== -->
+  <Choose>
+    <When Condition=" '$(TargetFrameworkIdentifier)' == '.NETMicroFramework' ">
+      <PropertyGroup>
+        <MetaDataProcessorDependsOn>EnsureEndianAwareDirectories;Compile;Obfuscate;MetaDataProcessorBE;CopyExeToEndian</MetaDataProcessorDependsOn>
+      </PropertyGroup>
+    </When>
+    <When Condition=" '$(TargetFrameworkIdentifier)' == '.NETnanoFramework' ">
+      <PropertyGroup>
+        <MetaDataProcessorDependsOn>Compile;Obfuscate;CopyToOutDir</MetaDataProcessorDependsOn>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <!-- ObfuscateDependsOn deliberately left empty so others can override this -->
+        <ObfuscateDependsOn>
+        </ObfuscateDependsOn>
+        <BuildDependsOn>
+          $(BuildDependsOn);
+          Obfuscate
+        </BuildDependsOn>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <!-- ================================================================== -->
+  <!-- Babel Target                                                       -->
+  <!-- ================================================================== -->
+  <Target Name="Obfuscate" DependsOnTargets="$(ObfuscateDependsOn)" Condition="'$(EnableObfuscation)'">
+    <Babel AddReferences="$(AddReferences)" AndroidSigningKeyAlias="$(AndroidSigningKeyAlias)" AndroidSigningKeyPass="$(AndroidSigningKeyPass)" AndroidSigningKeyStore="$(AndroidSigningKeyStore)" AndroidSigningStorePass="$(AndroidSigningStorePass)" BabelDirectory="$(BabelDirectory)" CleanAttributes="$(CleanAttributes)" ConstRemoval="$(ConstRemoval)" ControlFlowObfuscation="$(ControlFlowObfuscation)" CopyAttributes="$(MergeCopyAttributes)" DbgHelpDllDir="$(DbgHelpDllDir)" DeadCodeElimination="$(DeadCodeElimination)" DebuggingProtection="$(DebuggingProtection)" DependenciesManifest="$(DependenciesManifest)" DisgregateRemoval="$(DisgregateRemoval)" DynamicProxy="$(DynamicProxy)" DynamicProxyCallFilters="$(DynamicProxyCallFilters)" EmbedAssemblies="@(EmbedAssembly)" EmitInvalidOpcodes="$(EmitInvalidOpcodes)" EnableObfuscationAgent="$(EnableObfuscationAgent)" EnumRemoval="$(EnumRemoval)" FlattenNamespaces="$(FlattenNamespaces)" Framework="$(Framework)" GenerateDebug="$(GenerateDebug)" GenerateLogFile="$(GenerateBabelLogFile)" GenerateMapOutFile="$(GenerateBabelMapOutFile)" ILIterations="$(ILIterations)" InlineExpansion="$(InlineExpansion)" InputFile="$(BabelInputFile)" Instrument="$(BabelInstrument)" InstrumentEmptyMethods="$(InstrumentEmptyMethods)" Internalize="$(MergeInternalize)" KeyContainer="$(KeyContainerName)" KeyFile="$(KeyOriginatorFile)" KeyPwd="$(SigningCertPassword)" LogFile="$(BabelLogFile)" MakeProject="$(MakeBabelProjectFile)" MapInFiles="@(MapInFile)" MapOutFile="$(BabelMapOutFile)" MergeAssemblies="@(MergeAssembly)" ModuleInitializer="$(ModuleInitializer)" ModuleInitializerTarget="$(ModuleInitializerTarget)" ModuleVersionId="$(ModuleVersionId)" MsilEncryption="$(MsilEncryption)" NameLength="$(NameLength)" NamePrefix="$(NamePrefix)" XmlDoc="$(XmlDoc)" NoWarnings="$(NoWarnings)" ObfuscateEvents="$(ObfuscateEvents)" ObfuscateFields="$(ObfuscateFields)" ObfuscateMethods="$(ObfuscateMethods)" ObfuscateParameters="$(ObfuscateParameters)" ObfuscateProperties="$(ObfuscateProperties)" ObfuscateTypes="$(ObfuscateTypes)" ObfuscateXaml="$(ObfuscateXaml)" OutputFile="$(BabelOutputFile)" OverloadedRenaming="$(OverloadedRenaming)" PdbFile="$(PdbFile)" PdbPwd="$(PdbPwd)" Plugins="@(Plugins)" PluginsArguments="$(PluginsArguments)" RandomSeed="$(RandomSeed)" ResourceEncryption="$(ResourceEncryption)" RulesFiles="$(BableRulesFiles)" SatelliteAssemblies="$(SatelliteAssemblies)" SealClasses="$(SealClasses)" SearchDirectories="$(SearchDirectories)" SearchSatelliteAssemblies="$(SearchSatelliteAssemblies)" ShowLogo="$(ShowLogo)" ShowStatistics="$(ShowStatistics)" SkipFiles="$(BabelSkipFiles)" StringEncryption="$(StringEncryption)" SuppressIldasm="$(SuppressIldasm)" SuppressReflection="$(SuppressReflection)" TakeFiles="$(BabelTakeFiles)" TamperingDetection="$(TamperingDetection)" Trace="$(Trace)" UnicodeNormalization="$(UnicodeNormalization)" Use="$(Use)" ValueEncryption="$(ValueEncryption)" VerboseLevel="$(VerboseLevel)" VirtualFunctions="$(VirtualFunctions)" WarningsAsErrors="$(WarningsAsErrors)" XapCompressionLevel="$(XapCompressionLevel)" XmlRules="$(XmlRules)" />
+  </Target>
+</Project>

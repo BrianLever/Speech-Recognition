@@ -1,0 +1,17 @@
+﻿<Window x:Class="BlueMaria.View.Splashscreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlueMaria.View"
+        gif:ImageBehavior.AnimateInDesignMode="True"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com" ShowInTaskbar="False" WindowStyle="None" Height="150" Width="150" AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+      >
+
+    <Grid>
+        <Image x:Name="ac" Height="150" Width="150" RenderOptions.BitmapScalingMode="HighQuality" gif:ImageBehavior.AnimatedSource="/assets/Spinner-1s-200px.gif"  VerticalAlignment="Center" HorizontalAlignment="Center"   Visibility="Visible"  OpacityMask="White"    />
+
+    </Grid>
+</Window>
